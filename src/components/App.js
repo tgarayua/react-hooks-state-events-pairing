@@ -1,4 +1,7 @@
 import video from "../data/video.js";
+import Headers from "./Header.js"
+import Buttons from "./Buttons.js"
+import Comments from "./Comments.js"
 
 function App() {
   console.log("Here's your data:", video);
@@ -8,13 +11,19 @@ function App() {
       <iframe
         width="919"
         height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        src={video.embedUrl}
         frameborder="0"
         allowfullscreen
-        title="Thinking in React"
+        title={video.title}
       />
+      <Headers title={video.title}
+      views={video.views}
+      createdAt={video.createdAt}/>
+      <Buttons />
+      <Comments key={video.comments.id} comments={video.comments}/>
     </div>
   );
 }
 
 export default App;
+
